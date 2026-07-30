@@ -23,11 +23,6 @@ if (typeof window === 'undefined') {
 
     self.addEventListener("fetch", function (event) {
         const r = event.request;
-
-        // FIX: Bypass the service worker if the request is going to your external FastAPI backend
-        if (request.url.includes("test-ivng-backend.onrender.com")) {
-            return; // Let the browser handle this request normally
-        }
         
         if (r.cache === "only-if-cached" && r.mode !== "same-origin") {
             return;
