@@ -4,4 +4,12 @@ Your browser does not support the canvas tag.</canvas><noscript>Your browser doe
 `);n.forEach(t=>{e.appendChild(document.createTextNode(t)),e.appendChild(document.createElement("br"))})}function r(e){console.error(e),e instanceof Error?o(e.message):o(typeof e=="string"?e:"An unknown error occurred."),s("notice"),n=!1}const c=Engine.getMissingFeatures({threads:GODOT_THREADS_ENABLED});if(c.length!==0)if(GODOT_CONFIG.serviceWorker&&GODOT_CONFIG.ensureCrossOriginIsolationHeaders&&"serviceWorker"in navigator){let e;try{e=navigator.serviceWorker.getRegistration()}catch{e=Promise.reject(new Error("Service worker registration failed."))}Promise.race([e.then(e=>e!=null?Promise.reject(new Error("Service worker already exists.")):e).then(()=>engine.installServiceWorker()),new Promise(e=>{setTimeout(()=>e(),2e3)})]).then(()=>{window.location.reload()}).catch(e=>{console.error("Error while registering service worker:",e)})}else{const e=`Error
 The following features required to run Godot projects on the Web are missing:
 `;r(e+c.join(`
-`))}else s("progress"),engine.startGame({onProgress:function(e,n){e>0&&n>0?(t.value=e,t.max=n):(t.removeAttribute("value"),t.removeAttribute("max"))}}).then(()=>{s("hidden")},r)})()</script>
+`))}else s("progress"),
+engine.preloadFile('control-group1.pck'),
+engine.preloadFile('control-group2.pck'),
+engine.preloadFile('control-group3.pck'),
+engine.preloadFile('control-group4.pck'),
+engine.preloadFile('control-group5.pck'),
+engine.preloadFile('control-group6.pck'),
+engine.preloadFile('control-group7.pck'),
+engine.startGame({onProgress:function(e,n){e>0&&n>0?(t.value=e,t.max=n):(t.removeAttribute("value"),t.removeAttribute("max"))}}).then(()=>{s("hidden")},r)})()</script>
